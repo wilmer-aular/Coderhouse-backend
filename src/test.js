@@ -12,22 +12,22 @@ const handlerProducts = async () => {
     const container = new Container('products.txt');
     await container.createFile();
     const createList =await container.createList(listProducts);
-    console.info({createList})
+    console.info({method_createList: createList})
 
     const id = await container.save(newObject);
-    console.info({id})
+    console.info({method_save: id})
 
     const product = await container.getById(id);
-    console.info({product})
+    console.info({method_getById: product})
 
     await container.deleteById(product.id);
-    console.info("product removed successfully")
+    console.info({method_deleteById: 'product removed successfully'})
 
     const list = await container.getAll();
-    console.info({list: list.length})
+    console.info({method_getAll: list})
     
     await container.deleteAll();
-    console.info("All records were deleted successfully")
+    console.info({method_deleteAll:"All records were deleted successfully"})
 }
 
 handlerProducts();
