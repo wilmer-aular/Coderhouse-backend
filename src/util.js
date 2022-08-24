@@ -1,5 +1,17 @@
 import LosslessJSON from 'lossless-json';
 
+const majorkey = (array) => {
+  const getMax = (a, b) => Math.max(a, b);
+  return array.reduce(getMax);
+};
+export const createId = (array) => {
+  if (array.length) {
+    const majorId = (majorkey(array.map((i) => i.id))) + 1;
+    return majorId;
+  } 
+  return 1;
+};
+
 export const setProduct = (i) => {
   return {
     ...i,
@@ -20,3 +32,13 @@ export const fromStringList = (value) => {
     }
     return '';
   };
+
+export const listProducts = [
+  {title:"Papa",price:400,thumbnail:"wwww.papa.com"}, 
+  {title:"Pasta",price:350,thumbnail:"wwww.pasta.com"},
+  {title:"Harina",price:600,thumbnail:"wwww.harina.com"},
+  {title:"Cereal",price:200,thumbnail:"wwww.Cereal.com"},
+  {title:"Arroz",price:500,thumbnail:"wwww.arroz.com"},
+  {title:"Cafe",price:800,thumbnail:"wwww.cafe.com"},
+  {title:"Porotos",price:800,thumbnail:"wwww.Porotos.com"},
+]

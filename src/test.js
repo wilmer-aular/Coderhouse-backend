@@ -1,24 +1,33 @@
 import Container from './Container.js'
+import { listProducts } from './util.js';
 
 const newObject = {
-    id : 1,
-    title: 'Arroz',
-    price: 500,
-    thumbnail: 'wwww.arroz.com',
+    title: 'Tomates',
+    price: 100,
+    thumbnail: 'wwww.tomates.com',
 
 }
 
 const handlerProducts = async () => {
     const container = new Container('products.txt');
-    await container.createFile()
+    await container.createFile();
+    const createList =await container.createList(listProducts);
+    console.info({createList})
+
     const id = await container.save(newObject);
+    console.info({id})
 
     const product = await container.getById(id);
-    
+    console.info({product})
+
     await container.deleteById(product.id);
+    console.info("product removed successfully")
+
     const list = await container.getAll();
-    console.log(list);
-    //await container.deleteAll();
+    console.info({list: list.length})
+    
+    await container.deleteAll();
+    console.info("All records were deleted successfully")
 }
 
 handlerProducts();

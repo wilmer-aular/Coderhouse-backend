@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {fromStringList, fromListString} from './util.js'
+import {fromStringList, fromListString, createId} from './util.js'
 
 class Container {
 fsAsync = fs.promises;
@@ -15,13 +15,19 @@ fsAsync = fs.promises;
               console.error({err})
           }
     }
+    async createList (list) {
+        if(!list.length) return "The list is empty";
+           const object = list.shift();
+           await this.save(object);
+        if(list.length) await this.createList(list);
+       return "List created successfully" 
+    }
 
     async save (object) {
-        // en el create debo buscar la lista y crear un un id aleatorio y devolverlo
-        //siempre el ultimo de la lista
+        const id = createId( await this.getAll());
         try{
-          await this.fsAsync.appendFile(`./${this.filName}`, `${JSON.stringify(object)}, `);
-          return object.id;
+          await this.fsAsync.appendFile(`./${this.filName}`, `${id === 1 ? '' : ', '}${JSON.stringify({...object, id})}`);
+          return id;
         }catch(err) {
             console.error({err})
         }
@@ -35,10 +41,13 @@ fsAsync = fs.promises;
               console.error({err})
           }
     }
-     async deleteById(id){
+     async deleteById(id) {
         try{
             const data = await this.fsAsync.readFile(`./${this.filName}`, 'utf-8');
-            const newData = fromStringList(data).filter(i => i.id !== id);
+            const list = fromStringList(data);
+            const verifyExist = list.find(i => i.id === id);
+            if(!verifyExist) return `id ${id} invalid`
+            const newData = list.filter(i => i.id !== id);
             const dataSave = fromListString(newData);
             await this.fsAsync.writeFile(`./${this.filName}`,dataSave); 
         }catch(err) {
