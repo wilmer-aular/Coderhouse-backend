@@ -1,0 +1,30 @@
+{
+  "name": "coderhouse-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilmer-aular/Coderhouse-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wilmer-aular/Coderhouse-backend/issues"
+  },
+  "homepage": "https://github.com/wilmer-aular/Coderhouse-backend#readme",
+  "keywords": [],
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "lossless-json": "^1.0.5"
+  }
+}
