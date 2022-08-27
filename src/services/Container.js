@@ -1,5 +1,5 @@
-import fs from 'fs';
-import {fromStringList, fromListString, createId} from './util.js'
+const fs = require('fs');
+const {fromStringList, fromListString, createId} = require('../util/util.js')
 
 class Container {
 fsAsync = fs.promises;
@@ -16,7 +16,7 @@ fsAsync = fs.promises;
           }
     }
     async createList (list) {
-        if(!list.length) return "The list is empty";
+        if(!list || !list.length) return "The list is empty";
            const object = list.shift();
            await this.save(object);
         if(list.length) await this.createList(list);
@@ -40,6 +40,11 @@ fsAsync = fs.promises;
           }catch(err) {
               console.error({err})
           }
+    }
+    async getByRandom () {
+        const list =await this.getAll();
+       const n = Math.floor(Math.random() * list.length);
+       return list[n];
     }
      async deleteById(id) {
         try{
@@ -71,4 +76,4 @@ fsAsync = fs.promises;
     }
 }
 
-export default Container
+module.exports = Container

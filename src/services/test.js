@@ -1,5 +1,5 @@
-import Container from './Container.js'
-import { listProducts } from './util.js';
+const Container = require('./Container.js')
+const  {listProducts} = require('../util/util.js');
 
 const newObject = {
     title: 'Tomates',
@@ -26,8 +26,8 @@ const handlerProducts = async () => {
     const list = await container.getAll();
     console.info({method_getAll: list})
     
-    await container.deleteAll();
-    console.info({method_deleteAll:"All records were deleted successfully"})
+    // await container.deleteAll();
+    // console.info({method_deleteAll:"All records were deleted successfully"})
 }
 
 handlerProducts();

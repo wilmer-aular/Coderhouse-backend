@@ -1,10 +1,10 @@
-import LosslessJSON from 'lossless-json';
+const LosslessJSON = require('lossless-json');
 
 const majorkey = (array) => {
   const getMax = (a, b) => Math.max(a, b);
   return array.reduce(getMax);
 };
-export const createId = (array) => {
+const createId = (array) => {
   if (array.length) {
     const majorId = (majorkey(array.map((i) => i.id))) + 1;
     return majorId;
@@ -12,7 +12,7 @@ export const createId = (array) => {
   return 1;
 };
 
-export const setProduct = (i) => {
+const setProduct = (i) => {
   return {
     ...i,
       id : JSON.parse(i.id),
@@ -20,12 +20,12 @@ export const setProduct = (i) => {
   }
 };
 
-export const fromStringList = (value) => {
+const fromStringList = (value) => {
     if (!value) return [];
     const valueList = '[' + value + ']';
     return LosslessJSON.parse(valueList).map(setProduct);
   };
-  export const fromListString = (v) => {
+const fromListString = (v) => {
     if (v.length) {
       const transformer = LosslessJSON.stringify(v);
       return transformer.substring(1, transformer.length - 1);
@@ -33,7 +33,7 @@ export const fromStringList = (value) => {
     return '';
   };
 
-export const listProducts = [
+const listProducts = [
   {title:"Papa",price:400,thumbnail:"wwww.papa.com"}, 
   {title:"Pasta",price:350,thumbnail:"wwww.pasta.com"},
   {title:"Harina",price:600,thumbnail:"wwww.harina.com"},
@@ -42,3 +42,5 @@ export const listProducts = [
   {title:"Cafe",price:800,thumbnail:"wwww.cafe.com"},
   {title:"Porotos",price:800,thumbnail:"wwww.Porotos.com"},
 ]
+
+module.exports = {listProducts, fromStringList, createId, fromListString}
