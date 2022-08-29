@@ -7,7 +7,6 @@ const productController = {
        return res.json(await container.getAll())
     },
     getProductRandom: async (req, res) => {
-        console.log('llego', await container.getByRandom())
        return res.json(await container.getByRandom())
     }
 }

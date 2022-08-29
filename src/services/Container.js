@@ -1,8 +1,8 @@
 const fs = require('fs');
 const {fromStringList, fromListString, createId} = require('../util/util.js')
 
+const fsAsync = fs.promises;
 class Container {
-fsAsync = fs.promises;
 
     constructor (fileName) {
         this.filName = fileName;
@@ -10,7 +10,7 @@ fsAsync = fs.promises;
 
     async createFile () {
         try{
-            await this.fsAsync.writeFile(`./${this.filName}`,'');
+            await fsAsync.writeFile(`./${this.filName}`,'');
           }catch(err) {
               console.error({err})
           }
@@ -26,7 +26,7 @@ fsAsync = fs.promises;
     async save (object) {
         const id = createId( await this.getAll());
         try{
-          await this.fsAsync.appendFile(`./${this.filName}`, `${id === 1 ? '' : ', '}${JSON.stringify({...object, id})}`);
+          await fsAsync.appendFile(`./${this.filName}`, `${id === 1 ? '' : ', '}${JSON.stringify({...object, id})}`);
           return id;
         }catch(err) {
             console.error({err})
@@ -34,7 +34,7 @@ fsAsync = fs.promises;
     }
     async getById(id) {
         try{
-            const data = await this.fsAsync.readFile(`./${this.filName}`, 'utf-8');
+            const data = await fsAsync.readFile(`./${this.filName}`, 'utf-8');
             const newData = fromStringList(data);
             return newData.find(i => i.id === id);
           }catch(err) {
@@ -48,20 +48,20 @@ fsAsync = fs.promises;
     }
      async deleteById(id) {
         try{
-            const data = await this.fsAsync.readFile(`./${this.filName}`, 'utf-8');
+            const data = await fsAsync.readFile(`./${this.filName}`, 'utf-8');
             const list = fromStringList(data);
             const verifyExist = list.find(i => i.id === id);
             if(!verifyExist) return `id ${id} invalid`
             const newData = list.filter(i => i.id !== id);
             const dataSave = fromListString(newData);
-            await this.fsAsync.writeFile(`./${this.filName}`,dataSave); 
+            await fsAsync.writeFile(`./${this.filName}`,dataSave); 
         }catch(err) {
             console.error({err})
         }
     }
     async getAll() {
         try{
-            const data = await this.fsAsync.readFile(`./${this.filName}`, 'utf-8');
+            const data = await fsAsync.readFile(`./${this.filName}`, 'utf-8');
             return fromStringList(data);
         }catch(err) {
             console.error({err})
@@ -69,7 +69,7 @@ fsAsync = fs.promises;
     } 
      async deleteAll(){
         try{
-            await this.fsAsync.writeFile(`./${this.filName}`,''); 
+            await fsAsync.writeFile(`./${this.filName}`,''); 
         }catch(err) {
             console.error({err})
         }
