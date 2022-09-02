@@ -7,7 +7,7 @@ global.appRoot = path.resolve(__dirname);
 
 const app = express();
 app.disable('x-powered-by')
-const routerApi = require("./src/routers/fecade.js");
+const routerFacade = require("./src/routers/fecade.js");
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("", routerApi);
+app.use("", routerFacade);
 
 app.listen(8080, () => {
   console.info("El servidor está inicializado en el puerto 8080");
