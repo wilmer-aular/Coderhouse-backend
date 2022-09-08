@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Icons -->
+    <title>Idea-Aular</title>
+
+    <style>
+        .mainBanner {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form {
+            margin-top: 20px;
+            display: inline-grid;
+        }
+
+        .input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainBanner">
+        <h1>WELCOME</h1>
+        <form action="/api/products" method="POST" class="form">
+            <input class="input" type="text" name="title" placeholder="title" />
+            <input class="input" type="number" name="price" placeholder="price" />
+            <input class="input" type="url" name="thumbnail" placeholder="thumbnail" />
+            <button class="input"> send </button>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
