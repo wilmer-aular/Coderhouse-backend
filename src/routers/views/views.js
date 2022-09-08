@@ -2,7 +2,8 @@ let router = require("express-promise-router")();
 
 
 router.get("/", (req, res, next) => {
-    return res.json({ val: true });
+    //render es para que muestre una vista en lugar de un json
+    return res.render("index");
 });
 
 
