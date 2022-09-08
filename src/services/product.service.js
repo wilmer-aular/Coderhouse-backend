@@ -25,7 +25,7 @@ class Product {
         const id = createId(products);
         products.push({ ...object, id });
 
-        return { success: true, id };
+        return `<h1>New product creado, ID N° ${id}</h1>`;
     };
 
     async update(id, object) {

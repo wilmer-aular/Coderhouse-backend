@@ -25,12 +25,12 @@
 <body>
     <div class="mainBanner">
         <h1>WELCOME</h1>
-        <div class="form">
-            <input class="input" type="text" placeholder="title" />
-            <input class="input" type="number" placeholder="price" />
-            <input class="input" type="url" placeholder="thumbnail" />
+        <form action="/api/products" method="POST" class="form">
+            <input class="input" type="text" name="title" placeholder="title" />
+            <input class="input" type="number" name="price" placeholder="price" />
+            <input class="input" type="url" name="thumbnail" placeholder="thumbnail" />
             <button class="input"> send </button>
-        </div>
+        </form>
 
     </div>
 
