@@ -23,7 +23,7 @@ router.get("/views/hbs", async (req, res, next) => {
 
 router.get("/", (req, res, next) => {
     //render es para que muestre una vista en lugar de un json
-    return res.render("index.hbs");
+    return res.render("index");
 });
 
 module.exports = router;
