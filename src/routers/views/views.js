@@ -22,7 +22,7 @@ router.get("/views/hbs", async (req, res, next) => {
 });
 
 router.get("/", (req, res, next) => {
-    //render es para que muestre una vista en lugar de un json
+    //render es para que muestre una vista del desafio anterior
     return res.render("index");
 });
 
