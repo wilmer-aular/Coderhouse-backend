@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Icons -->
+    <title>Form-Ejs</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #f5f1f1">
+    <div style="margin-top: 50px;">
+        <div style="margin: 0px auto; width: 600px;">
+            <h2 class="text-primary">Ingrese los datos</h2>
+            <form action="/api/products" method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">titulo</label>
+                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="title"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Precio</label>
+                    <input type="number" name="price" class="form-control" id="exampleInputPassword1"
+                        placeholder="precio" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Thumbnail</label>
+                    <input type="url" name="thumbnail" class="form-control" id="exampleInputPassword1"
+                        placeholder="url del producto" required>
+                </div>
+                <input type="text" name="page" value="hbs" hidden />
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <%- include('table', {products}); %>
+</body>
+
+</html>

@@ -1,9 +1,6 @@
 const { createId } = require('../util/util.js');
 
-let products = [
-    { id: 1, title: "Papa", price: 400, thumbnail: "wwww.papa.com" },
-    { id: 2, title: "Pasta", price: 350, thumbnail: "wwww.pasta.com" },
-]
+let products = []
 
 const error = { error: 'product not found' }
 class Product {
@@ -32,7 +29,7 @@ class Product {
             const id = createId(products);
             products.push({ ...object, id });
 
-            return `<h1>New product creado, ID N° ${id}</h1>`;
+            return { success: true, id };
         } catch (error) {
             throw { message: '', status: 404, error }
         }

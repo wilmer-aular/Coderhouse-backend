@@ -1,0 +1,38 @@
+<div style="margin: 0px auto; width: 600px; margin-top:20px">
+    <h2 class="text-danger">Historial</h2>
+    <% if (products.length){ %>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="text-warning">ID</span></th>
+                    <th scope="col"><span class="text-warning">TITLE</span></th>
+                    <th scope="col"><span class="text-warning">PRICE</span></th>
+                    <th scope="col"><span class="text-warning">THUMBNAIL</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product){ %>
+                    <tr>
+                        <td>
+                            <%=product.id%>
+                        </td>
+                        <td>
+                            <%=product.title%>
+                        </td>
+                        <td>
+                            <%=product.price%>
+                        </td>
+                        <td>
+                            <img width="26px" src=<%=product.thumbnail%> />
+                        </td>
+                    </tr>
+                    <% }); %>
+
+            </tbody>
+        </table>
+        <% } else { %>
+            <div role="alert" style="background-color: #ed9898; padding: 10px;  border-radius: 3px">
+                <span class="text-center text-danger">No se encontraron datos</span>
+            </div>
+            <% } %>
+</div>

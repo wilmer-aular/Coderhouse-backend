@@ -9,8 +9,12 @@ const productController = {
         return res.send(await product.getById(req.params.id))
     },
     create: async (req, res) => {
-
         const body = req.body;
+        if (body.page) {
+            await product.create(body);
+            res.status(301).redirect(`/views/${body.page}`);
+            return;
+        }
         return res.send(await product.create(body))
     },
     update: async (req, res) => {

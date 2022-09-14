@@ -18,12 +18,15 @@
   },
   "homepage": "https://github.com/wilmer-aular/Coderhouse-backend#readme",
   "dependencies": {
-    "express": "^4.18.1",
+    "body-parser": "^1.19.0",
     "ejs": "^3.1.3",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-promise-router": "^3.0.3",
+    "handlebars": "^4.7.7",
     "lossless-json": "^1.0.4",
     "moment": "^2.27.0",
-    "body-parser": "^1.19.0",
-    "express-promise-router": "^3.0.3"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

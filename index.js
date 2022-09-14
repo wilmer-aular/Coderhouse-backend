@@ -1,21 +1,28 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const handlebars = require('express-handlebars');
 
 var path = require("path");
 global.appRoot = path.resolve(__dirname);
-
 
 const app = express();
 app.disable('x-powered-by')
 const routerFacade = require("./src/routers/fecade.js");
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.engine("hbs", handlebars.engine({
+  extname: "hbs",
+  layoutsDir: __dirname + "/views/hbs",
+  defaultLayout: "index.hbs"
+}))
 
+app.set("view engine", "ejs");
+app.set("view engine", "pug");
+app.set("view engine", "hbs");
+
+app.use(express.static("public"));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
