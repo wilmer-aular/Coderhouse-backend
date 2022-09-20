@@ -14,12 +14,12 @@ function getTable(listHtml) {
                 </tbody>
             </table>`
 }
-const alert = `<div role="alert" style="background-color: #ed9898; padding: 10px;  border-radius: 3px">
-<span class="text-center text-danger">No se encontraron datos</span>
-</div>`
-
 function renderProducts(products) {
-    let HTML = alert;
+
+    let HTML = `<div role="alert" style="background-color: #ed9898; padding: 10px;  border-radius: 3px">
+                    <span class="text-center text-danger">No se encontraron datos</span>
+                </div>`
+
     if (products.length) {
         const listhtml = products.map(product => {
             return ` <tr>
@@ -37,7 +37,9 @@ function renderProducts(products) {
 }
 function renderMessages(messages) {
 
-    let HTML = alert;
+    let HTML = `<li role="alert" style="background-color: #ed9898; padding: 10px;  border-radius: 3px;">
+                    <span class="text-danger">No se encontraron datos</span>
+                </li>`
 
     if (messages.length) {
         HTML = messages.map(message => {
