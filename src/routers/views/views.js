@@ -15,10 +15,8 @@ router.get("/views/pug", async (req, res, next) => {
     return res.render("pug/index.pug", { products });
 });
 router.get("/views/hbs", async (req, res, next) => {
-    const products = await product.getAll();
-
     //render es para que muestre una vista en handlebars
-    return res.render("hbs/index.hbs", { products });
+    return res.render("hbs/index.hbs");
 });
 
 router.get("/", (req, res, next) => {

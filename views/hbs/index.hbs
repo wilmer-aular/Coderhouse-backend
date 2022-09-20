@@ -8,61 +8,58 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body style="background-color: #f5f1f1">
+<body>
+
     <div style="margin-top: 50px;">
-        <div style="margin: 0px auto; width: 600px;">
+        <div style="margin: 0px auto; width: 700px; background-color: #f5f1f1; padding: 40px">
             <h2 class="text-primary">Ingrese los datos</h2>
-            <form action="/api/products" method="POST">
+            <form id="formProducts">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="title"
+                    <input type="text" name="title" class="form-control" id="title" placeholder="title"
                         aria-describedby="emailHelp" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Precio</label>
-                    <input type="number" name="price" class="form-control" id="exampleInputPassword1"
-                        placeholder="price" required>
+                    <input type="number" name="price" class="form-control" id="price" placeholder="price" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Thumbnail</label>
-                    <input type="url" name="thumbnail" class="form-control" id="exampleInputPassword1"
-                        placeholder="thumbnail">
+                    <input type="url" name="thumbnail" class="form-control" id="thumbnail" placeholder="thumbnail">
                 </div>
-                <input type="text" name="page" value="hbs" hidden />
-
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary" id="sendProducts">Enviar</button>
             </form>
-        </div>
-        <div style="margin: 0px auto; width: 600px; margin-top:20px">
-            <h2 class="text-danger">Historial</h2>
-            {{#if products.length}}
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col"><span class="text-warning">ID</span></th>
-                        <th scope="col"><span class="text-warning">TITLE</span></th>
-                        <th scope="col"><span class="text-warning">PRICE</span></th>
-                        <th scope="col"><span class="text-warning">THUMBNAIL</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each products}}
-                    <tr>
-                        <th scope="row">{{this.id}}</th>
-                        <td>{{this.title}}</td>
-                        <td>{{this.price}}</td>
-                        <td> <img width="26px" src={{this.thumbnail}} /></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            {{else}}
-            <div role="alert" style="background-color: #ed9898; padding: 10px;  border-radius: 3px">
-                <span class="text-center text-danger">No se encontraron datos</span>
+            <div style="margin: 0px auto; width: 620px; margin-top:20px">
+                <h2 class="text-danger">Historial</h2>
+                <div id="products" />
             </div>
-            {{/if}}
         </div>
     </div>
+    <div style="margin-top: 50px; margin-bottom: 100px">
+        <div style="margin: 0px auto; width: 700px; background-color: #f5f1f1; padding: 40px">
+            <h2 class="text-primary">Centro de mensajes</h2>
+            <form id="formMessages">
+                <div style="width: 300px; margin-top: 20px; margin-bottom: 20px">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="email" required>
+                </div>
+                <div style="width: 500px;">
+                    <ul style="list-style:none" id="messages">
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px; display: flex;">
+                    <input style="width: 535px; margin-right: 10px" type="text" name="message" class="form-control"
+                        id="message" placeholder="mensaje">
+                    <button type="submit" class="btn btn-primary" id="sendMessage">Enviar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/hbs/index.js"> </script>
 </body>
 
 </html>
