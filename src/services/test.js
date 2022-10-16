@@ -1,5 +1,5 @@
-const Container = require('./Container.js')
-const  {listProducts} = require('../util/util.js');
+import Container from './Container.js';
+import { listProducts } from '../util/util.js';
 
 const newObject = {
     title: 'Tomates',
@@ -11,21 +11,21 @@ const newObject = {
 const handlerProducts = async () => {
     const container = new Container('products.txt');
     await container.createFile();
-    const createList =await container.createList(listProducts);
-    console.info({method_createList: createList})
+    const createList = await container.createList(listProducts);
+    console.info({ method_createList: createList })
 
     const id = await container.save(newObject);
-    console.info({method_save: id})
+    console.info({ method_save: id })
 
     const product = await container.getById(id);
-    console.info({method_getById: product})
+    console.info({ method_getById: product })
 
     await container.deleteById(product.id);
-    console.info({method_deleteById: 'product removed successfully'})
+    console.info({ method_deleteById: 'product removed successfully' })
 
     const list = await container.getAll();
-    console.info({method_getAll: list})
-    
+    console.info({ method_getAll: list })
+
     // await container.deleteAll();
     // console.info({method_deleteAll:"All records were deleted successfully"})
 }

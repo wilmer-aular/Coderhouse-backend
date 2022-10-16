@@ -1,26 +1,27 @@
-const express = require("express");
-const { Server: HTTPServer } = require("http");
-const { Server: SocketServer } = require("socket.io");
-const Product = require('./src/services/product.service');
+import express from 'express';
+import { Server as HTTPServer } from 'http';
+import { Server as SocketServer } from 'socket.io';
+import Product from './src/services/product.service.js';
 const product = new Product();
-const Container = require('./src/services/container.service');
+import Container from './src/services/container.service.js';
 const message = new Container('messages.txt');
 
-const bodyParser = require("body-parser");
-const handlebars = require('express-handlebars');
+import handlebars from 'express-handlebars';
 
-var path = require("path");
-global.appRoot = path.resolve(__dirname);
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const httpServer = new HTTPServer(app);
 const io = new SocketServer(httpServer);
 
 app.disable('x-powered-by')
-const routerFacade = require("./src/routers/fecade.js");
+import routerFacade from "./src/routers/fecade.js";
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.engine("hbs", handlebars.engine({
   extname: "hbs",

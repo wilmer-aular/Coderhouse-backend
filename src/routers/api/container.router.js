@@ -1,5 +1,7 @@
-let router = require("express-promise-router")();
-const containerController = require('../../controllers/container.controller')
+import { Router } from 'express';
+import containerController from '../../controllers/container.controller.js';
+
+const router = Router();
 
 router.get("/", (req, res) => {
     return res.json(
@@ -10,4 +12,4 @@ router.get("/", (req, res) => {
 router.get("/products", containerController.getProducts);
 router.get("/product/:id", containerController.getProductRandom);
 
-module.exports = router;
+export default router;

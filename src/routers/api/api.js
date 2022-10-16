@@ -1,9 +1,10 @@
-let router = require("express-promise-router")();
-const containerRouter = require("./container.router");
-const productRouter = require("./product.router");
+import { Router } from 'express';
+import containerRouter from "./container.router.js";
+import productRouter from "./product.router.js";
 
+const router = Router();
 
 router.use("/container", containerRouter);
 router.use("/products", productRouter);
 
-module.exports = router;
+export default router;

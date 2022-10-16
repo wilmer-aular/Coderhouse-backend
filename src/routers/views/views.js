@@ -1,6 +1,8 @@
-let router = require("express-promise-router")();
-const Product = require('../../services/product.service.js');
+import { Router } from 'express';
+import Product from '../../services/product.service.js';
 const product = new Product();
+
+const router = Router();
 
 router.get("/views/ejs", async (req, res, next) => {
     const products = await product.getAll();
@@ -24,4 +26,4 @@ router.get("/", (req, res, next) => {
     return res.render("index");
 });
 
-module.exports = router;
+export default router;

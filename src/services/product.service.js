@@ -1,4 +1,4 @@
-const { createId } = require('../util/util.js');
+import { createId } from '../util/util.js';
 
 let products = []
 
@@ -66,4 +66,4 @@ class Product {
 
 }
 
-module.exports = Product
+export default Product;

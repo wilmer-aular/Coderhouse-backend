@@ -1,4 +1,4 @@
-const Product = require('../services/product.service.js');
+import Product from '../services/product.service.js';
 const product = new Product();
 
 const productController = {
@@ -26,4 +26,4 @@ const productController = {
     },
 }
 
-module.exports = productController;
+export default productController;

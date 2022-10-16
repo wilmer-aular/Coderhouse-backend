@@ -1,4 +1,4 @@
-const Container = require('../services/container.service.js');
+import Container from '../services/container.service.js';
 const container = new Container('products.txt');
 
 const containerController = {
@@ -10,4 +10,4 @@ const containerController = {
    }
 }
 
-module.exports = containerController;
+export default containerController;

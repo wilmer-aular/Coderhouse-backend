@@ -1,4 +1,4 @@
-const LosslessJSON = require('lossless-json');
+import LosslessJSON from 'lossless-json';
 
 const majorkey = (array) => {
   const getMax = (a, b) => Math.max(a, b);
@@ -43,4 +43,4 @@ const listProducts = [
   { title: "Porotos", price: 800, thumbnail: "wwww.Porotos.com" },
 ]
 
-module.exports = { listProducts, fromStringList, createId, fromListString }
+export { listProducts, fromStringList, createId, fromListString }

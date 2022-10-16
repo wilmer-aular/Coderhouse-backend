@@ -1,6 +1,7 @@
-let router = require("express-promise-router")();
-const productController = require('../../controllers/product.controller')
+import { Router } from 'express';
+import productController from '../../controllers/product.controller.js';
 
+const router = Router();
 
 router.get("/", productController.getAll);
 router.get("/:id", productController.getById);
@@ -9,4 +10,4 @@ router.put("/:id", productController.update);
 router.delete("/:id", productController.deleteById);
 
 
-module.exports = router;
+export default router;

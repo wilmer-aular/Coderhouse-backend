@@ -1,9 +1,9 @@
-const fs = require('fs');
-const moment = require('moment');
-const { fromStringList, fromListString, createId } = require('../util/util.js')
+import fs from 'fs';
+import moment from 'moment';
+import { fromStringList, fromListString, createId } from '../util/util.js';
 
 const fsAsync = fs.promises;
-class Container {
+export class Container {
 
     constructor(fileName) {
         this.filName = fileName;
@@ -78,4 +78,4 @@ class Container {
     }
 }
 
-module.exports = Container
+export default Container;
