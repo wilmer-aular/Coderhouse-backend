@@ -1,10 +1,14 @@
 import express from 'express';
 import { Server as HTTPServer } from 'http';
 import { Server as SocketServer } from 'socket.io';
-import Product from './src/services/product.service.js';
-const product = new Product();
-import Container from './src/services/container.service.js';
-const message = new Container('messages.txt');
+// import Product from './src/services/product.service.js';
+// const product = new Product();
+//import Container from './src/services/container.service.js';
+//const message = new Container('messages.txt');
+import Message from './src/services/knex/message.service.js';
+const message = new Message('messages');
+import Product from './src/services/knex/product.service.js';
+const product = new Product('products');
 
 import handlebars from 'express-handlebars';
 
@@ -58,7 +62,7 @@ io.on('connection', async socket => {
     io.sockets.emit('products', await product.getAll())
   })
   socket.on('newMessages', async data => {
-    await message.save(data);
+    await message.create(data);
     io.sockets.emit('messages', await message.getAll())
   })
 
